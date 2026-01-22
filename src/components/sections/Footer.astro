@@ -16,7 +16,12 @@ const currentYear = new Date().getFullYear();
     <div class="flex flex-col md:flex-row justify-between items-center">
       <div class="mb-4 md:mb-0">
         <a href="https://www.instagram.com/meet_saspara/" target="_blank" class="block w-10 h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300" aria-label="Instagram Profile">
-           <img src="/assets/instagram-profile.png" alt="Instagram Profile" class="w-full h-full object-cover" onerror="this.src='/assets/fb_logo.png'" />
+           <img 
+            src={import.meta.env.BASE_URL + "assets/instagram-profile.png"} 
+            alt="Instagram Profile" 
+            class="w-full h-full object-cover" 
+            onerror={`this.src='${import.meta.env.BASE_URL}assets/fb_logo.png'`} 
+          />
         </a>
       </div>
 

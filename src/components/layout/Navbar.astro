@@ -9,10 +9,14 @@ const lang = Astro.currentLocale;
 
 <header id="navbar" class="fixed top-0 w-full bg-white/90 dark:bg-neutral-dark/90 backdrop-blur-sm z-50 transition-all duration-300">
   <div class="max-w-container mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Logo/Monogram with dark/light mode versions -->
-    <!-- Logo/Monogram with dark/light mode versions -->
+    <!-- Instagram Logo -->
     <a href="https://www.instagram.com/meet_saspara/" target="_blank" class="block w-10 h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300" aria-label="Instagram Profile">
-       <img src="/assets/instagram-profile.png" alt="Instagram Profile" class="w-full h-full object-cover" onerror="this.src='/assets/fb_logo.png'" />
+       <img 
+        src={import.meta.env.BASE_URL + "assets/instagram-profile.png"} 
+        alt="Instagram Profile" 
+        class="w-full h-full object-cover" 
+        onerror={`this.src='${import.meta.env.BASE_URL}assets/fb_logo.png'`} 
+      />
     </a>
 
     <!-- Desktop Navigation -->
