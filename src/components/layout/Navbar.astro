@@ -3,8 +3,6 @@ import ThemeToggle from '../ui/ThemeToggle.astro';
 import Button from '../ui/Buttons.astro'; // Ensuring .astro extension
 import { t } from '../../utils/i18n'; // Path relative to this component
 import { Image } from 'astro:assets';
-import logoLight from '../../assets/fb_logo.png';
-import logoDark from '../../assets/fb_logo_white.png';
 
 const lang = Astro.currentLocale;
 ---
@@ -13,12 +11,9 @@ const lang = Astro.currentLocale;
   <div class="max-w-container mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo/Monogram with dark/light mode versions -->
     <!-- Logo/Monogram with dark/light mode versions -->
-    <a href={import.meta.env.BASE_URL} class="block" aria-label="Homepage">
-      <!-- Light mode logo (hidden in dark mode) -->
-      <Image src={logoLight} alt="Portfolio Logo" class="h-8 w-auto dark:hidden transition-opacity duration-300" />
-
-      <!-- Dark mode logo (hidden in light mode) -->
-      <Image src={logoDark} alt="Portfolio Logo" class="h-8 w-auto hidden dark:block transition-opacity duration-300" />
+    <!-- Instagram Logo -->
+    <a href="https://www.instagram.com/meet_saspara/" target="_blank" class="block text-secondary dark:text-white hover:text-primary transition-colors duration-300" aria-label="Instagram Profile">
+      <i class="fa-brands fa-instagram fa-2x"></i>
     </a>
 
     <!-- Desktop Navigation -->

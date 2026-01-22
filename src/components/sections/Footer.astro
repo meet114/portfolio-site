@@ -1,8 +1,6 @@
 ---
 import { t } from '../../utils/i18n';
 import { Image } from 'astro:assets';
-import logoLight from '../../assets/logo.png';
-import logoDark from '../../assets/logo_white.png';
 import { name, linkedin_url, github_url } from '../../utils/me';
 
 interface Props {
@@ -17,12 +15,8 @@ const currentYear = new Date().getFullYear();
   <div class="max-w-container mx-auto px-6">
     <div class="flex flex-col md:flex-row justify-between items-center">
       <div class="mb-4 md:mb-0">
-        <a href={import.meta.env.BASE_URL} class="block" aria-label="Homepage">
-          <!-- Light mode logo (hidden in dark mode) -->
-          <Image src={logoLight} alt={name + " Logo"} class="h-7 w-auto dark:hidden transition-opacity duration-300" />
-
-          <!-- Dark mode logo (hidden in light mode) -->
-          <Image src={logoDark} alt={name + " Logo"} class="h-7 w-auto hidden dark:block transition-opacity duration-300" />
+        <a href="https://www.instagram.com/meet_saspara/" target="_blank" class="block text-secondary dark:text-white hover:text-primary transition-colors duration-300" aria-label="Instagram Profile">
+          <i class="fa-brands fa-instagram fa-2x"></i>
         </a>
       </div>
 
