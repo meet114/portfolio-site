@@ -3,6 +3,7 @@ import ThemeToggle from '../ui/ThemeToggle.astro';
 import Button from '../ui/Buttons.astro'; // Ensuring .astro extension
 import { t } from '../../utils/i18n'; // Path relative to this component
 import { Image } from 'astro:assets';
+import logoImage from '../../assets/instagram_logo.jpg';
 
 const lang = Astro.currentLocale;
 ---
@@ -11,12 +12,7 @@ const lang = Astro.currentLocale;
   <div class="max-w-container mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Instagram Logo -->
     <a href="https://www.instagram.com/meet_saspara/" target="_blank" class="block w-10 h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300" aria-label="Instagram Profile">
-       <img 
-        src={import.meta.env.BASE_URL + "assets/instagram-profile.png"} 
-        alt="Instagram Profile" 
-        class="w-full h-full object-cover" 
-        onerror={`this.src='${import.meta.env.BASE_URL}assets/fb_logo.png'`} 
-      />
+      <Image src={logoImage} alt="Instagram Profile" class="w-full h-full object-cover" />
     </a>
 
     <!-- Desktop Navigation -->
