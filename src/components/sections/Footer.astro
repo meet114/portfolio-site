@@ -17,7 +17,7 @@ const currentYear = new Date().getFullYear();
   <div class="max-w-container mx-auto px-6">
     <div class="flex flex-col md:flex-row justify-between items-center">
       <div class="mb-4 md:mb-0">
-        <a href="/" class="block" aria-label="Homepage">
+        <a href={import.meta.env.BASE_URL} class="block" aria-label="Homepage">
           <!-- Light mode logo (hidden in dark mode) -->
           <Image src={logoLight} alt={name + " Logo"} class="h-7 w-auto dark:hidden transition-opacity duration-300" />
 
@@ -65,8 +65,8 @@ const currentYear = new Date().getFullYear();
 
     <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-800 text-xs text-center text-secondary/60 dark:text-white/60">
       <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-        <a href="/imprint/" class="hover:text-primary transition-colors duration-300">{t('footer.imprint', lang)}</a>
-        <a href="/privacy-policy/" class="hover:text-primary transition-colors duration-300">{t('footer.privacyPolicy', lang)}</a>
+        <a href={import.meta.env.BASE_URL + "/imprint/"} class="hover:text-primary transition-colors duration-300">{t('footer.imprint', lang)}</a>
+        <a href={import.meta.env.BASE_URL + "/privacy-policy/"} class="hover:text-primary transition-colors duration-300">{t('footer.privacyPolicy', lang)}</a>
       </nav>
     </div>
   </div>
