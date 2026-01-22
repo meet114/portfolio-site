@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Buttons.astro';
+import { t } from '../utils/i18n';
+
+const lang = 'en';
+const pageTitle = "Resume | " + t('site.title', lang);
+const pageDescription = "View and download the resume of Meetkumar Saspara.";
+---
+
+<Layout title={pageTitle} description={pageDescription} lang={lang}>
+  <section class="py-24 md:py-32 bg-gray-50 dark:bg-neutral-dark/50 min-h-screen">
+    <div class="max-w-container mx-auto px-6 h-full flex flex-col">
+      <div class="text-center mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <h1 class="font-heading text-h2 text-secondary dark:text-white">My Resume</h1>
+        
+        <a 
+          href={import.meta.env.BASE_URL + "resume.pdf"}
+          download="Meetkumar_Saspara_Resume.pdf"
+          class="inline-flex items-center justify-center rounded-lg font-medium text-base py-3 px-6 bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" x2="12" y1="15" y2="3"></line>
+          </svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="flex-grow bg-white dark:bg-neutral-dark rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden h-[800px]">
+        <iframe 
+          src={import.meta.env.BASE_URL + "resume.pdf"}
+          class="w-full h-full border-0" 
+          title="Resume PDF"
+        >
+        </iframe>
+      </div>
+      
+      <div class="text-center mt-4 text-sm text-gray-500 dark:text-gray-400 md:hidden">
+        <p>PDF preview not visible? <a href={import.meta.env.BASE_URL + "resume.pdf"} class="text-primary underline">Click here to view file</a>.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
