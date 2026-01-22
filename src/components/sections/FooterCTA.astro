@@ -1,6 +1,7 @@
 ---
 import Button from '../ui/Buttons.astro';
 import { t } from '../../utils/i18n';
+import { linkedin_url } from '../../utils/me';
 
 interface Props {
   lang: string | undefined;
@@ -21,7 +22,7 @@ const { lang } = Astro.props;
 
       <Button
         text={t('footerCTA.buttonText', lang)}
-        href="https://github.com/nicremo"
+        href={linkedin_url}
         variant="primary"
         size="lg"
         target="_blank"
