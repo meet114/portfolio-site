@@ -23,6 +23,6 @@ export const address_line_1 = atob(address_line_1_base64_encoded);
 export const address_line_2 = atob(address_line_2_base64_encoded);
 
 // Helper code for creating URLs from the above data.
-export const linkedin_short = `linkedin.com/in/${linkedin_username}`;
+export const linkedin_short = `www.linkedin.com/in/${linkedin_username}`;
 export const linkedin_url   = `https://www.linkedin.com/in/${linkedin_username}`;
 export const github_url = `https://github.com/${github_username}`;
