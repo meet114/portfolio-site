@@ -9,7 +9,7 @@ export const github_username = "meet114";
  | Base64 and paste the output as a string argument to the corresponding       |
  | `atob()` function below.                                                    |
  \============================================================================*/
-const email_base64_encoded = "bWVldHNhc3BhcmE5QGdtYWlsLmNvbQ==";
+const email_base64_encoded = "bWVldGt1bWFyc2FzcGFyYUBnbWFpbC5jb20=";
 const phone_base64_encoded = "KzEoOTM0KTQ1MS05Mjkx";
 
 // The address fields below are for the privacy policy. They are also Base64 encoded.
