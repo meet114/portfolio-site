@@ -14,8 +14,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Lato', 'sans-serif'],
-        heading: ['Lato', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Sora', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       fontSize: {
