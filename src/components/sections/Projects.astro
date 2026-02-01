@@ -12,6 +12,7 @@ const projects = [
   {
     title: 'SwifDock',
     slug: 'swifdock',
+    repository: 'https://github.com/meet114/swifdock',
     // image: '/images/projects/db-training.jpg', // No image available
     gradient: 'from-blue-500 to-cyan-400',
     tags: [t('projects.tags.systems', lang), t('projects.tags.swift', lang), t('projects.tags.security', lang)],
@@ -23,6 +24,7 @@ const projects = [
   {
     title: 'JWKS Server',
     slug: 'jwks-server',
+    repository: 'https://github.com/meet114/jwks-server',
     // image: '/images/projects/media-dashboard.jpg',
     gradient: 'from-green-500 to-emerald-400',
     tags: [t('projects.tags.security', lang), t('projects.tags.python', lang), t('projects.tags.web', lang)],
@@ -34,6 +36,7 @@ const projects = [
   {
     title: 'PolymorphicCodeVault',
     slug: 'polymorphic-code-vault',
+    repository: 'https://github.com/meet114/polymorphic-code-vault',
     // image: '/images/projects/explainer-videos.jpg',
     gradient: 'from-purple-500 to-indigo-400',
     tags: [t('projects.tags.cpp', lang), t('projects.tags.java', lang), t('projects.tags.systems', lang)],
@@ -87,7 +90,7 @@ const projects = [
 
             {/* Changed to external link or placeholder since internal pages don't exist */}
             <a
-              href="https://github.com/meetsaspara" 
+              href={project.repository} 
               target="_blank"
               class="inline-flex items-center justify-center rounded-lg font-medium text-sm py-2 px-4 border border-primary text-primary hover:bg-primary/10 bg-transparent transition-colors"
             >
