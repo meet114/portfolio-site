@@ -1,0 +1,683 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lang = 'en';
+const pageTitle = "TECM ePortfolio | Meetkumar Saspara";
+const pageDescription = "Technical Communication ePortfolio showcasing writing samples from all five units.";
+
+const BASE = import.meta.env.BASE_URL;
+
+const units = [
+  {
+    id: 'unit1',
+    label: 'Unit 1',
+    subtitle: 'Correspondence',
+    iconType: 'mail',
+    gradient: 'from-blue-500 to-cyan-400',
+    files: [
+      { name: 'Memo', path: BASE + 'tecm/Memo_2.pdf', type: 'pdf' },
+    ],
+  },
+  {
+    id: 'unit2',
+    label: 'Unit 2',
+    subtitle: 'Research Reports',
+    iconType: 'search',
+    gradient: 'from-indigo-500 to-purple-400',
+    files: [
+      { name: 'Interview Report', path: BASE + 'tecm/Interview_Report.pdf', type: 'pdf' },
+      { name: 'Secondary & Annotated Bibs', path: BASE + 'tecm/Secondary_Ann_Bibs.pdf', type: 'pdf' },
+      { name: 'eSurvey Report', path: BASE + 'tecm/eSurvey_Report.pdf', type: 'pdf' },
+    ],
+  },
+  {
+    id: 'unit3',
+    label: 'Unit 3',
+    subtitle: 'Proposal',
+    iconType: 'clipboard',
+    gradient: 'from-emerald-500 to-teal-400',
+    files: [
+      { name: 'Proposal', path: BASE + 'tecm/Unit3_Proposal.pdf', type: 'pdf' },
+    ],
+  },
+  {
+    id: 'unit4',
+    label: 'Unit 4',
+    subtitle: 'Formal Report',
+    iconType: 'file-text',
+    gradient: 'from-orange-500 to-amber-400',
+    files: [
+      { name: 'Formal Report', path: BASE + 'tecm/Unit4_Formal_Report.pdf', type: 'pdf' },
+    ],
+  },
+  {
+    id: 'unit5',
+    label: 'Unit 5',
+    subtitle: 'Digital Presentation',
+    iconType: 'video',
+    gradient: 'from-rose-500 to-pink-400',
+    files: [
+      { name: 'Docker UNT Presentation', path: BASE + 'tecm/Docker_UNT_Presentation.mp4', type: 'video' },
+    ],
+  },
+];
+
+// SVG paths for Lucide icons (inline — no import needed)
+const icons: Record<string, string> = {
+  'mail': `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>`,
+  'search': `<circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>`,
+  'clipboard': `<path d="M9 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-2"></path><rect x="9" y="2" width="6" height="4" rx="1" ry="1"></rect>`,
+  'file-text': `<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line>`,
+  'video': `<polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>`,
+  'folder': `<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>`,
+  'book-open': `<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>`,
+  'download': `<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>`,
+  'external-link': `<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>`,
+  'arrow-left': `<path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path>`,
+  'chevron-right': `<polyline points="9 18 15 12 9 6"></polyline>`,
+  'file': `<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline>`,
+};
+
+function icon(name: string, size = 18, extraClass = '') {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${extraClass}">${icons[name] ?? ''}</svg>`;
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} lang={lang}>
+  <div class="tecm-root">
+
+    <!-- ── Sidebar ── -->
+    <aside class="tecm-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo" set:html={icon('book-open', 22, 'text-primary')} />
+        <div>
+          <h2 class="font-heading text-white text-base font-semibold tracking-wide">TECM</h2>
+          <p class="font-mono text-white/40 text-xs tracking-widest uppercase">ePortfolio</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        {units.map((unit) => (
+          <div class="unit-group">
+
+            <button
+              class="unit-btn"
+              data-unit-id={unit.id}
+              data-first-file={unit.files[0].path}
+              data-first-type={unit.files[0].type}
+              data-first-name={unit.files[0].name}
+            >
+              <span class="unit-icon-wrap" set:html={icon(unit.iconType, 17)} />
+              <div class="unit-info">
+                <span class="unit-label">{unit.label}</span>
+                <span class="unit-sub">{unit.subtitle}</span>
+              </div>
+              <span class="chevron-wrap" set:html={icon('chevron-right', 14)} />
+            </button>
+
+            {unit.files.length > 1 && (
+              <div class="file-list" id={`files-${unit.id}`}>
+                {unit.files.map((file) => (
+                  <button class="file-btn" data-path={file.path} data-type={file.type} data-unit={unit.id} data-name={file.name}>
+                    <span class="file-icon" set:html={icon('file', 13)} />
+                    {file.name}
+                  </button>
+                ))}
+              </div>
+            )}
+
+          </div>
+        ))}
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href={BASE} class="back-link">
+          <span set:html={icon('arrow-left', 14)} />
+          Back to Portfolio
+        </a>
+      </div>
+    </aside>
+
+    <!-- ── Main ── -->
+    <main class="tecm-main">
+
+      <!-- Welcome -->
+      <div id="welcome-state" class="welcome-state">
+        <div class="welcome-icon-wrap" set:html={icon('folder', 48, 'text-primary')} />
+        <h1 class="font-heading text-white text-4xl font-bold mt-4 mb-2">TECM ePortfolio</h1>
+        <p class="text-white/45 text-sm mb-10">Select a unit from the sidebar to view your work.</p>
+
+        <div class="cards-grid">
+          {units.map((unit) => (
+            <button
+              class="unit-card"
+              data-path={unit.files[0].path}
+              data-type={unit.files[0].type}
+              data-unit={unit.id}
+              data-name={unit.files[0].name}
+            >
+              <div class={`card-icon-bg bg-gradient-to-br ${unit.gradient}`}>
+                <span set:html={icon(unit.iconType, 22, 'text-white')} />
+              </div>
+              <span class="font-mono text-primary text-xs font-semibold tracking-widest uppercase mt-3">{unit.label}</span>
+              <span class="text-white/60 text-xs text-center leading-snug mt-1">{unit.subtitle}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Viewer -->
+      <div id="viewer-state" class="viewer-state hidden">
+        <div class="viewer-topbar">
+          <div class="viewer-title-wrap">
+            <span id="viewer-badge" class="font-mono text-primary text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full border border-primary/30 bg-primary/10">Unit 1</span>
+            <h2 id="viewer-title" class="font-heading text-white text-base font-semibold ml-3">Document</h2>
+          </div>
+          <div class="viewer-actions">
+            <a id="download-btn" href="#" download class="action-btn btn-ghost">
+              <span set:html={icon('download', 15)} />
+              Download
+            </a>
+            <a id="open-btn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn btn-primary">
+              <span set:html={icon('external-link', 15)} />
+              Open
+            </a>
+          </div>
+        </div>
+
+        <div class="viewer-frame-wrap">
+          <iframe id="pdf-frame" class="pdf-frame hidden" title="Document Viewer"></iframe>
+          <video id="video-frame" class="video-frame hidden" controls>
+            <source id="video-source" src="" type="video/mp4" />
+          </video>
+          <div id="fallback-msg" class="fallback-msg hidden">
+            <span set:html={icon('file', 32, 'text-white/30')} />
+            <p class="text-white/50 text-sm mt-3">Can't preview this file in your browser.</p>
+            <a id="fallback-link" href="#" target="_blank" class="action-btn btn-primary mt-4">Open File Directly</a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</Layout>
+
+<script>
+  const welcomeState  = document.getElementById('welcome-state')!;
+  const viewerState   = document.getElementById('viewer-state')!;
+  const pdfFrame      = document.getElementById('pdf-frame')    as HTMLIFrameElement;
+  const videoFrame    = document.getElementById('video-frame')  as HTMLVideoElement;
+  const videoSource   = document.getElementById('video-source') as HTMLSourceElement;
+  const fallbackMsg   = document.getElementById('fallback-msg')!;
+  const viewerBadge   = document.getElementById('viewer-badge')!;
+  const viewerTitle   = document.getElementById('viewer-title')!;
+  const downloadBtn   = document.getElementById('download-btn') as HTMLAnchorElement;
+  const openBtn       = document.getElementById('open-btn')     as HTMLAnchorElement;
+  const fallbackLink  = document.getElementById('fallback-link')as HTMLAnchorElement;
+
+  function clearActive() {
+    document.querySelectorAll('.unit-btn, .file-btn, .unit-card').forEach(el => el.classList.remove('active'));
+  }
+
+  function loadFile(path: string, type: string, unitId: string, name: string) {
+    welcomeState.classList.add('hidden');
+    viewerState.classList.remove('hidden');
+
+    const num = unitId.replace('unit', '');
+    viewerBadge.textContent = `Unit ${num}`;
+    viewerTitle.textContent  = name;
+    downloadBtn.href = path;
+    openBtn.href     = path;
+    fallbackLink.href= path;
+
+    pdfFrame.classList.add('hidden');
+    videoFrame.classList.add('hidden');
+    fallbackMsg.classList.add('hidden');
+
+    if (type === 'pdf') {
+      pdfFrame.src = path;
+      pdfFrame.classList.remove('hidden');
+    } else if (type === 'video') {
+      videoSource.src = path;
+      videoFrame.load();
+      videoFrame.classList.remove('hidden');
+    } else {
+      fallbackMsg.classList.remove('hidden');
+    }
+  }
+
+  // Unit sidebar buttons
+  document.querySelectorAll('.unit-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const unitId   = btn.getAttribute('data-unit-id')!;
+      const path     = btn.getAttribute('data-first-file')!;
+      const type     = btn.getAttribute('data-first-type')!;
+      const name     = btn.getAttribute('data-first-name')!;
+      const fileList = document.getElementById(`files-${unitId}`);
+
+      clearActive();
+      btn.classList.add('active');
+
+      if (fileList) {
+        fileList.classList.toggle('open');
+        // also load first file
+        loadFile(path, type, unitId, name);
+      } else {
+        loadFile(path, type, unitId, name);
+      }
+    });
+  });
+
+  // Sub-file buttons
+  document.querySelectorAll('.file-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const path   = btn.getAttribute('data-path')!;
+      const type   = btn.getAttribute('data-type')!;
+      const unitId = btn.getAttribute('data-unit')!;
+      const name   = btn.getAttribute('data-name')!;
+      clearActive();
+      btn.classList.add('active');
+      // keep parent unit btn visually active too
+      document.querySelector(`[data-unit-id="${unitId}"]`)?.classList.add('active');
+      loadFile(path, type, unitId, name);
+    });
+  });
+
+  // Welcome screen cards
+  document.querySelectorAll('.unit-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const path   = card.getAttribute('data-path')!;
+      const type   = card.getAttribute('data-type')!;
+      const unitId = card.getAttribute('data-unit')!;
+      const name   = card.getAttribute('data-name')!;
+      clearActive();
+
+      const fileList = document.getElementById(`files-${unitId}`);
+      if (fileList) fileList.classList.add('open');
+      const unitBtn = document.querySelector(`[data-unit-id="${unitId}"]`);
+      if (unitBtn) unitBtn.classList.add('active');
+
+      loadFile(path, type, unitId, name);
+    });
+  });
+</script>
+
+<style>
+  /* ── Root layout ── */
+  .tecm-root {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 72px;
+    background-color: #0D1117; /* neutral.dark */
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* ── Sidebar ── */
+  .tecm-sidebar {
+    width: 268px;
+    min-width: 268px;
+    background: #0a0d13;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 72px;
+    height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 20px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: rgba(10,132,255,0.12);
+    border: 1px solid rgba(10,132,255,0.2);
+    border-radius: 10px;
+    flex-shrink: 0;
+    color: #0A84FF;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    padding: 12px 0;
+    overflow-y: auto;
+  }
+
+  /* Unit row */
+  .unit-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 11px 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,0.6);
+    transition: background 0.18s, color 0.18s;
+    text-align: left;
+  }
+
+  .unit-btn:hover {
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.9);
+  }
+
+  .unit-btn.active {
+    background: rgba(10,132,255,0.1);
+    color: #4AC1FF;
+  }
+
+  .unit-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    flex-shrink: 0;
+    color: inherit;
+    transition: background 0.18s;
+  }
+
+  .unit-btn.active .unit-icon-wrap {
+    background: rgba(10,132,255,0.18);
+    color: #0A84FF;
+  }
+
+  .unit-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .unit-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #0A84FF;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .unit-sub {
+    font-size: 12.5px;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chevron-wrap {
+    flex-shrink: 0;
+    opacity: 0.3;
+    transition: transform 0.22s, opacity 0.18s;
+  }
+
+  .unit-btn.active .chevron-wrap {
+    opacity: 0.7;
+    transform: rotate(90deg);
+  }
+
+  /* Accordion file list */
+  .file-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s ease;
+    padding-left: 18px;
+  }
+
+  .file-list.open {
+    max-height: 240px;
+  }
+
+  .file-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    font-size: 12.5px;
+    text-align: left;
+    border-radius: 7px;
+    margin-bottom: 2px;
+    transition: background 0.18s, color 0.18s;
+  }
+
+  .file-btn:hover {
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.85);
+  }
+
+  .file-btn.active {
+    background: rgba(10,132,255,0.12);
+    color: #4AC1FF;
+  }
+
+  .file-icon {
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  .file-btn.active .file-icon {
+    opacity: 1;
+    color: #0A84FF;
+  }
+
+  /* Footer */
+  .sidebar-footer {
+    padding: 14px 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .back-link:hover {
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── Main area ── */
+  .tecm-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: #0D1117;
+  }
+
+  /* Welcome */
+  .welcome-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 32px;
+    text-align: center;
+  }
+
+  .welcome-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(10,132,255,0.08);
+    border: 1px solid rgba(10,132,255,0.2);
+    border-radius: 24px;
+    color: #0A84FF;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .unit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.22s, border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+  }
+
+  .unit-card:hover {
+    background: rgba(10,132,255,0.08);
+    border-color: rgba(10,132,255,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(10,132,255,0.12);
+  }
+
+  .card-icon-bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Viewer */
+  .viewer-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .viewer-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+
+  .viewer-title-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  .viewer-actions {
+    display: flex;
+    gap: 9px;
+  }
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.09);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+  }
+
+  .btn-primary {
+    background: #0A84FF;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(10,132,255,0.25);
+  }
+
+  .btn-primary:hover {
+    background: #0073e6;
+  }
+
+  .viewer-frame-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .pdf-frame {
+    width: 100%;
+    flex: 1;
+    border: none;
+    min-height: calc(100vh - 200px);
+  }
+
+  .video-frame {
+    width: 100%;
+    flex: 1;
+    max-height: calc(100vh - 160px);
+    background: #000;
+    object-fit: contain;
+  }
+
+  .fallback-msg {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 48px;
+  }
+
+  /* Utility */
+  .hidden { display: none !important; }
+
+  /* Scrollbar */
+  .tecm-sidebar::-webkit-scrollbar { width: 4px; }
+  .tecm-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .tecm-root { flex-direction: column; padding-top: 64px; }
+    .tecm-sidebar { width: 100%; min-width: unset; position: relative; top: 0; height: auto; max-height: 44vh; }
+    .viewer-topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
