@@ -1,5 +1,5 @@
 export const name = "Meetkumar Saspara";
-export const homepage_url = "https://meet114.github.io/portfolio-site/";
+export const homepage_url = "https://saspara.com/";
 export const linkedin_username = "meetkumar-saspara";
 export const github_username = "meet114";
 

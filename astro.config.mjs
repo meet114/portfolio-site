@@ -5,8 +5,8 @@ import compress from 'astro-compress';
 import preact from '@astrojs/preact';
 
 export default defineConfig({
-  site: 'https://meet114.github.io',
-  base: '/portfolio-site',
+  site: 'https://saspara.com',
+  base: '/',
   output: 'static',
   trailingSlash: 'always',
 
