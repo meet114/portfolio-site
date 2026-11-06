@@ -1,0 +1,79 @@
+[
+  {
+    "name": "BruceCompanion",
+    "url": "https://github.com/meet114/BruceCompanion",
+    "visibility": "public",
+    "description": "",
+    "language": "Swift"
+  },
+  {
+    "name": "container",
+    "url": "https://github.com/meet114/container",
+    "visibility": "public",
+    "description": "A tool for creating and running Linux containers using lightweight virtual machines on a Mac. It is written in Swift, and optimized for Apple silicon. ",
+    "language": "Swift"
+  },
+  {
+    "name": "DataStruct-Diaries",
+    "url": "https://github.com/meet114/DataStruct-Diaries",
+    "visibility": "public",
+    "description": "A comprehensive collection of Data Structures and Algorithms (DSA) problems and solutions. Includes implementations, explanations, and optimizations for a wide range of topics like arrays, linked lists, trees, sorting algorithms, recursion, and more.",
+    "language": "Java"
+  },
+  {
+    "name": "jwks_server",
+    "url": "https://github.com/meet114/jwks_server",
+    "visibility": "public",
+    "description": "This repository contains a JWKS Server project for CSCE 3550 (Computer Security) at the University of North Texas (UNT).",
+    "language": "Python"
+  },
+  {
+    "name": "Kafka-FDB-Streamline",
+    "url": "https://github.com/meet114/Kafka-FDB-Streamline",
+    "visibility": "public",
+    "description": "",
+    "language": ""
+  },
+  {
+    "name": "Luxe-UI",
+    "url": "https://github.com/meet114/Luxe-UI",
+    "visibility": "public",
+    "description": "",
+    "language": ""
+  },
+  {
+    "name": "PolymorphicCodeVault",
+    "url": "https://github.com/meet114/PolymorphicCodeVault",
+    "visibility": "public",
+    "description": "",
+    "language": "HTML"
+  },
+  {
+    "name": "portfolio-site",
+    "url": "https://github.com/meet114/portfolio-site",
+    "visibility": "public",
+    "description": "",
+    "language": "Astro"
+  },
+  {
+    "name": "swift-dock",
+    "url": "https://github.com/meet114/swift-dock",
+    "visibility": "public",
+    "description": "Native macOS container runtime tool",
+    "language": "HTML"
+  },
+  {
+    "name": "textilesflowerp-staging",
+    "url": "https://github.com/meet114/textilesflowerp-staging",
+    "visibility": "public",
+    "description": "Meet staging TextilesFlow ERP web (saspara.com) — uses live myfocushub API",
+    "language": "JavaScript"
+  },
+  {
+    "name": "unionclef",
+    "url": "https://github.com/meet114/unionclef",
+    "visibility": "public",
+    "description": "Lets your agent loose block game",
+    "language": ""
+  }
+]

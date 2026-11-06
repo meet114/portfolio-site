@@ -1,0 +1,17 @@
+---
+interface Props { visibility: 'public' | 'private'; }
+const { visibility } = Astro.props;
+const isPublic = visibility === 'public';
+---
+<span class:list={['repository-visibility', { 'is-public': isPublic }]} title={isPublic ? 'Public repository' : 'Private repository'}>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    {isPublic ? <><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></> : <><path d="m3 3 18 18M10.6 5.1 12 5c6.5 0 10 7 10 7a19 19 0 0 1-3 3.8M6.5 6.5A22 22 0 0 0 2 12s3.5 7 10 7a12 12 0 0 0 5.5-1.5M10 10a3 3 0 0 0 4 4"/></>}
+  </svg>
+  <span>{isPublic ? 'Public' : 'Private'}</span>
+</span>
+<style>
+.repository-visibility { display:inline-flex; align-items:center; gap:5px; font-size:11px; color:#657080; }
+.repository-visibility.is-public { color:#177444; }
+:global(.dark) .repository-visibility { color:#afbac7; }
+:global(.dark) .repository-visibility.is-public { color:#79dca4; }
+</style>

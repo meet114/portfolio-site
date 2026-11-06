@@ -8,9 +8,10 @@ if (typeof window !== 'undefined') {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   // ScrollTrigger is registered globally via gsap.registerPlugin(ScrollTrigger)
   // Initialize AOS with custom settings
-  AOS.init({
+  window.AOS?.init({
     duration: 800,
     easing: 'ease-out',
     once: false,
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Refresh AOS when window resizes
   window.addEventListener('resize', () => {
-    AOS.refresh();
+    window.AOS?.refresh();
   });
 
   // Custom animations for specific elements using GSAP

@@ -105,7 +105,7 @@
       "result": "A lightweight, secure container solution integrated with macOS security frameworks."
     },
     "buttonText": "View Code",
-    "allProjectsButtonText": "View All on GitHub"
+    "allProjectsButtonText": "View All Projects"
   },
   "timeline": {
     "title": "Experience & Education",
@@ -127,8 +127,6 @@
     "subtitle": "Reach out for opportunities or questions — saspara.com · GitHub · LinkedIn.",
     "emailTitle": "Email",
     "emailButtonText": "Send Email",
-    "phoneTitle": "Phone",
-    "phoneButtonText": "Call Me",
     "githubTitle": "GitHub",
     "githubButtonText": "View Profile",
     "linkedinTitle": "LinkedIn",

@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RepositoryVisibility from '../components/ui/RepositoryVisibility.astro';
+import repositories from '../data/repositories.json';
+---
+<Layout title="All Projects — Meetkumar Saspara" description="Explore Meetkumar Saspara's GitHub repositories.">
+  <section class="repository-gallery max-w-container mx-auto px-6">
+    <a class="gallery-back" href="/#projects">← Back to portfolio</a>
+    <p class="eyebrow">THE CODE COLLECTION</p>
+    <h1>All repositories<span>.</span></h1>
+    <p class="gallery-intro">Experiments, tools, and projects from my GitHub.</p>
+    <div class="gallery-controls">
+      <label class="gallery-search">Search repositories<input type="search" id="repository-search" placeholder="Search by name, language, or description…" /></label>
+      <label class="gallery-filter">Visibility<select id="repository-filter"><option value="all">All repositories</option><option value="public">Public</option><option value="private">Private</option></select></label>
+    </div>
+    <p id="repository-count" aria-live="polite">{repositories.length} repositories</p>
+    <div class="repository-grid">
+      {repositories.map((repo, index) => (
+        <article class="repository-card" data-visibility={repo.visibility} data-search={`${repo.name} ${repo.language} ${repo.description}`.toLowerCase()}>
+          <div class="repository-cover" style={`--cover-color: ${['#1d344d', '#294238', '#3c3652'][index % 3]}`}>
+            <span class="repository-tag">{repo.language || 'Repository'}</span>
+            <span class="repository-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <h2><a href={repo.url} target="_blank" rel="noopener noreferrer">{repo.name}</a></h2>
+          </div>
+          <div class="repository-details">
+            <p>{repo.description || 'Explore the code and project details on GitHub.'}</p>
+            <div class="repository-card-bottom"><a href={repo.url} target="_blank" rel="noopener noreferrer">View Code</a><RepositoryVisibility visibility={repo.visibility as 'public' | 'private'} /></div>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p id="repository-empty" hidden>No repositories match your search.</p>
+    <p class="gallery-note">Repository snapshot · November 6, 2026. Showing repositories available through the connected GitHub account.</p>
+  </section>
+</Layout>
+<script>
+const search = document.querySelector<HTMLInputElement>('#repository-search')!;
+const filter = document.querySelector<HTMLSelectElement>('#repository-filter')!;
+const cards = [...document.querySelectorAll<HTMLElement>('.repository-card')];
+function updateGallery() {
+  const query = search.value.trim().toLowerCase();
+  let count = 0;
+  for (const card of cards) {
+    const matches = (filter.value === 'all' || card.dataset.visibility === filter.value) && (card.dataset.search || '').includes(query);
+    card.hidden = !matches;
+    if (matches) count++;
+  }
+  document.querySelector('#repository-count')!.textContent = `${count} ${count === 1 ? 'repository' : 'repositories'}`;
+  document.querySelector<HTMLElement>('#repository-empty')!.hidden = count !== 0;
+}
+search.addEventListener('input', updateGallery);
+filter.addEventListener('change', updateGallery);
+</script>
+<style>
+.repository-gallery { padding-top:130px; padding-bottom:80px; }
+.gallery-back { display:inline-block; font-size:13px; color:var(--portfolio-accent); margin-bottom:40px; }
+h1 { font:500 clamp(38px,6vw,70px)/1.1 Inter,sans-serif; letter-spacing:-.06em; }
+h1 span { color:var(--portfolio-accent); }
+.gallery-intro { color:var(--portfolio-muted); margin:20px 0 35px; }
+.gallery-controls { display:flex; flex-wrap:wrap; gap:20px; }
+.gallery-controls label { display:flex; flex-direction:column; gap:9px; font-size:12px; }
+.gallery-search { flex:1; min-width:min(100%,260px); }
+input,select { padding:13px 15px; background:var(--portfolio-surface); color:var(--portfolio-ink); border:1px solid var(--portfolio-line); border-radius:5px; font-size:14px; }
+#repository-count { font-size:12px; color:var(--portfolio-muted); margin:25px 0 15px; }
+.repository-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.repository-card { display:flex; flex-direction:column; overflow:hidden; background:var(--portfolio-surface); border:1px solid var(--portfolio-line); border-radius:8px; }
+.repository-card[hidden] { display:none; }
+.repository-cover { position:relative; min-height:215px; background-color:var(--cover-color); background-image:radial-gradient(circle at 2px 2px,#ffffff33 1px,transparent 0); background-size:20px 20px; overflow:hidden; }
+.repository-tag { position:absolute; top:16px; left:16px; border:1px solid #ffffff45; color:#e8edf4; border-radius:3px; padding:4px 7px; font:9px 'JetBrains Mono',monospace; }
+.repository-number { position:absolute; right:20px; top:46px; font:500 95px/1.5 Inter,sans-serif; letter-spacing:-9px; color:#ffffff20; }
+.repository-card h2 { position:absolute; bottom:16px; left:16px; right:16px; font:600 22px/1.3 Sora,sans-serif; color:#fff; overflow-wrap:anywhere; letter-spacing:-.03em; }
+.repository-details { display:flex; flex-direction:column; flex:1; padding:24px; }
+.repository-card p { font-size:14px; line-height:1.75; color:var(--portfolio-muted); margin:0 0 24px; }
+.repository-card-bottom { margin-top:auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.repository-card-bottom > a { display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--portfolio-accent); color:var(--portfolio-accent); font-size:14px; font-weight:500; padding:8px 16px; border-radius:8px; transition:background .2s; }
+.repository-card-bottom > a:hover { background:rgba(var(--color-primary-rgb),.1); }
+.gallery-note { font-size:11px; color:var(--portfolio-muted); margin-top:35px; }
+#repository-empty { padding:40px 0; color:var(--portfolio-muted); }
+@media(max-width:959px) { .repository-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .repository-grid { grid-template-columns:1fr; } .gallery-filter { width:100%; } }
+</style>

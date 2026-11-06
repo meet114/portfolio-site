@@ -10,34 +10,31 @@ const lang = Astro.currentLocale;
 
 <header id="navbar" class="fixed top-0 w-full bg-white/90 dark:bg-neutral-dark/90 backdrop-blur-sm z-50 transition-all duration-300">
   <div class="max-w-container mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Instagram Logo -->
-    <a href="https://www.instagram.com/meet_saspara/" target="_blank" class="block w-10 h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300" aria-label="Instagram Profile">
-      <Image src={logoImage} alt="Instagram Profile" class="w-full h-full object-cover" />
-    </a>
+    <a href="/#start" class="portfolio-wordmark" aria-label="Meetkumar Saspara home">ms<span>.</span></a>
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-8">
       <ul class="flex space-x-8">
         <li>
-          <a href={import.meta.env.BASE_URL + "/#start"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.start', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#start"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.start', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/#about"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.about', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#about"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.about', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/#skills"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.skills', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#skills"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.skills', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/#projects"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.projects', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#projects"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.projects', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/resume"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.resume', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/resume"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.resume', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/tecm"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">TECM</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/tecm"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">TECM</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/#contact"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.contact', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#contact"} class="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.contact', lang)}</a>
         </li>
       </ul>
 
@@ -64,25 +61,25 @@ const lang = Astro.currentLocale;
     <div class="max-w-container mx-auto px-6 py-4">
       <ul class="flex flex-col space-y-4">
         <li>
-          <a href={import.meta.env.BASE_URL + "/#start"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.start', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#start"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.start', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/#about"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.about', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#about"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.about', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/#skills"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.skills', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#skills"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.skills', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/#projects"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.projects', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#projects"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.projects', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/resume"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.resume', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/resume"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.resume', lang)}</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/tecm"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">TECM</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/tecm"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">TECM</a>
         </li>
         <li>
-          <a href={import.meta.env.BASE_URL + "/#contact"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.contact', lang)}</a>
+          <a href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/#contact"} class="block py-2 text-secondary dark:text-white hover:text-primary dark:hover:text-primary">{t('nav.contact', lang)}</a>
         </li>
       </ul>
     </div>

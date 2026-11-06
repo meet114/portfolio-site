@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { t } from '../utils/i18n';
-import { name, email, phone, address_line_1, address_line_2 } from '../utils/me';
+import { name, email, address_line_1, address_line_2 } from '../utils/me';
 
 const lang = 'en'; // Explicitly English for this page
 const pageTitle = "Imprint | " + t('site.title', lang);
@@ -25,7 +25,6 @@ const pageDescription = "Imprint of the website " + t('site.title', lang);
 
         <h2>Contact:</h2>
         <p>
-          Phone: {phone}<br />
           Email: {email}
         </p>
 

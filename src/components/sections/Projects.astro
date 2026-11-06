@@ -1,6 +1,6 @@
 ---
+import RepositoryVisibility from '../ui/RepositoryVisibility.astro';
 import { t } from '../../utils/i18n';
-import { github_url } from '../../utils/me';
 
 interface Props {
   lang: string | undefined;
@@ -48,11 +48,13 @@ const projects = [
     <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
       {projects.map((project, index) => (
         <div
-          class="md:col-span-4 group bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+          class="project-card md:col-span-4 group bg-white dark:bg-neutral-dark border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
           data-aos="fade-up"
           data-aos-delay={index * 100}
         >
-          <div class={`relative overflow-hidden aspect-video bg-gradient-to-br ${project.gradient}`}>
+          <div class={`project-cover relative overflow-hidden aspect-video bg-gradient-to-br ${project.gradient}`}>
+            <span class="project-number" aria-hidden="true">0{index + 1}</span>
+            {/* Geometric Pattern Overlay */}
             <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
             
             <div class="absolute top-4 left-4 flex flex-wrap gap-2">
@@ -70,19 +72,20 @@ const projects = [
             </div>
           </div>
 
-          <div class="p-6">
+          <div class="p-6 project-details">
             <p class="text-secondary/70 dark:text-white/70 mb-6 text-sm">
               {project.shortDescription}
             </p>
 
+            {/* Changed to external link or placeholder since internal pages don't exist */}
             <a
               href={project.repository} 
               target="_blank"
-              rel="noopener noreferrer"
               class="inline-flex items-center justify-center rounded-lg font-medium text-sm py-2 px-4 border border-primary text-primary hover:bg-primary/10 bg-transparent transition-colors"
             >
               {t('projects.buttonText', lang)}
             </a>
+            <div class="project-visibility"><RepositoryVisibility visibility="public" /></div>
           </div>
         </div>
       ))}
@@ -90,9 +93,7 @@ const projects = [
 
     <div class="mt-12 text-center" data-aos="fade-up">
       <a
-        href={github_url}
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/projects/"
         class="inline-flex items-center justify-center rounded-lg font-medium text-base py-3 px-8 bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
       >
         {t('projects.allProjectsButtonText', lang)}

@@ -1,7 +1,7 @@
 ---
-import { 
-  Code2Icon, LayersIcon, BracesIcon, TerminalIcon, 
-  RocketIcon, Globe2Icon, BoxIcon, CloudIcon, CpuIcon, DatabaseIcon, 
+import {
+  Code2Icon, LayersIcon, BracesIcon, TerminalIcon,
+  RocketIcon, Globe2Icon, BoxIcon, CloudIcon, CpuIcon, DatabaseIcon,
   GitBranchIcon, ServerIcon, ActivityIcon, SmartphoneIcon
 } from '@lucide/astro';
 
@@ -18,7 +18,7 @@ const skillClusters = [
     id: 'languages',
     title: t('skills.clusters.languages.title', lang),
     description: t('skills.clusters.languages.description', lang),
-    icon: Code2Icon, 
+    icon: Code2Icon,
     tools: [
       { name: 'Python', icon: TerminalIcon },
       { name: 'Java', icon: Code2Icon },
@@ -32,26 +32,26 @@ const skillClusters = [
     id: 'ai-ml',
     title: t('skills.clusters.ai_ml.title', lang),
     description: t('skills.clusters.ai_ml.description', lang),
-    icon: LayersIcon, 
+    icon: LayersIcon,
     tools: [
       { name: 'PyTorch', icon: CpuIcon },
       { name: 'TensorFlow', icon: LayersIcon },
-      { name: 'YOLO', icon: BoxIcon }, 
-      { name: 'LLaMA / RAG', icon: ActivityIcon }, 
-      { name: 'Kafka / CDC', icon: ServerIcon }, 
-      { name: 'Prometheus', icon: ActivityIcon }, 
+      { name: 'YOLO', icon: BoxIcon },
+      { name: 'LLaMA / RAG', icon: ActivityIcon },
+      { name: 'Kafka / CDC', icon: ServerIcon },
+      { name: 'Prometheus', icon: ActivityIcon },
     ]
   },
   {
     id: 'frameworks-tools',
     title: t('skills.clusters.frameworks_tools.title', lang),
     description: t('skills.clusters.frameworks_tools.description', lang),
-    icon: Globe2Icon, 
+    icon: Globe2Icon,
     tools: [
       { name: 'FastAPI / Flask', icon: ServerIcon },
       { name: 'React / Node', icon: Globe2Icon },
       { name: 'Flutter', icon: SmartphoneIcon },
-      { name: 'Docker / K8s', icon: BoxIcon }, 
+      { name: 'Docker / K8s', icon: BoxIcon },
       { name: 'AWS', icon: CloudIcon },
       { name: 'GitHub Actions', icon: GitBranchIcon },
     ]
