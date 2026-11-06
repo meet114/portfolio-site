@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ms.">
+  <rect width="64" height="64" rx="14" fill="#17202b"/>
+  <text
+    x="32"
+    y="42"
+    text-anchor="middle"
+    font-family="Inter, Sora, system-ui, -apple-system, sans-serif"
+    font-size="28"
+    font-weight="700"
+    letter-spacing="-1.5"
+    fill="#eff2f4"
+  >ms<tspan fill="#8aafff">.</tspan></text>
+</svg>

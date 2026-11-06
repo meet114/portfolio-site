@@ -3,7 +3,6 @@ import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/sections/Footer.astro';
 import '../styles/global.css';
 import { t } from '../utils/i18n'; // Import the translation helper
-import favicon_white from '../assets/favicon.png';
 import profileImg from '../assets/profile.png';
 import { name, linkedin_url, github_url } from '../utils/me';
 
@@ -30,10 +29,12 @@ const {
     <meta name="description" content={description} />
     <title>{title}</title>
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href={favicon_white.src} /> {/* Keep SVG for modern browsers */}
-    <link rel="icon" type="image/png" href={favicon_white.src} /> {/* Use new PNG favicon */}
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> {/* Assuming you might add a 180x180 apple-touch-icon.png to /public */}
+    <!-- Favicons (ms. wordmark for browser tabs + Google Search) -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site!).href} />
@@ -80,13 +81,30 @@ const {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "url": Astro.site!.href,
-      "name": t('site.title', lang),
-      "alternateName": "Portfolio Website",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${Astro.site!.href}search?q={search_term_string}`,
-        "query-input": "required name=search_term_string"
+      "name": "Meetkumar Saspara",
+      "alternateName": ["ms.", "Meetkumar Saspara Portfolio"],
+      "description": description,
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Person",
+        "name": name,
+        "url": Astro.site!.href
       }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Meetkumar Saspara",
+      "alternateName": "ms.",
+      "url": Astro.site!.href,
+      "logo": {
+        "@type": "ImageObject",
+        "url": new URL('/favicon-512x512.png', Astro.site!).href,
+        "width": 512,
+        "height": 512
+      },
+      "image": new URL('/favicon-512x512.png', Astro.site!).href,
+      "sameAs": [linkedin_url, github_url]
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -94,8 +112,8 @@ const {
       "name": name,
       "url": Astro.site!.href,
       "image": new URL(profileImg.src, Astro.site!).href,
-      "jobTitle": t('hero.role', lang), // "Dualer Student @ Digitale Medien" or "Dual Student @ Digital Media"
-      "description": description, // Main site description
+      "jobTitle": t('hero.role', lang),
+      "description": description,
       "sameAs": [
         linkedin_url,
         github_url
