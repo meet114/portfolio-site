@@ -1,6 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #0A84FF;
+  --color-secondary: #102039;
+  --color-highlightBlue: #4AC1FF;
+  --color-neutral-bg: #F5F8FC;
+  --color-neutral-dark: #0D1117;
+
+  --font-sans: Inter, sans-serif;
+  --font-heading: Sora, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --text-h1: clamp(3rem, 5vw, 4.5rem);
+  --text-h2: clamp(2.25rem, 4vw, 3rem);
+  --text-body: clamp(1rem, 1.125vw, 1.125rem);
+
+  --max-width-container: 1280px;
+  --spacing-gutter: 24px;
+  --shadow-button: 0 4px 12px 0 rgba(10, 132, 255, 0.25);
+  --background-image-akzentGradient: linear-gradient(180deg, #0A84FF 0%, #4AC1FF 100%);
+
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1280px;
+}
 
 /* Prevent horizontal scrolling on mobile */
 html, body {
@@ -11,11 +36,11 @@ html, body {
 }
 
 :root {
-  --color-primary-rgb: 37, 99, 235; /* Blue-600 RGB values */
+  --color-primary-rgb: 37, 99, 235;
 }
 
 .dark {
-  --color-primary-rgb: 59, 130, 246; /* Blue-500 RGB values for dark mode */
+  --color-primary-rgb: 59, 130, 246;
 }
 
 @layer base {
@@ -25,50 +50,61 @@ html, body {
   }
 
   body {
-    font-family: 'Inter', sans-serif;
-    @apply text-body;
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Sora', sans-serif;
+    font-family: var(--font-heading);
     font-weight: 600;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 12px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-white dark:bg-neutral-dark;
+    background: #fff;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: var(--color-neutral-dark);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+    background: #d1d5db;
+    border-radius: 9999px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #374151;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-400 dark:bg-gray-600;
+    background: #9ca3af;
   }
 
-  /* Selection color */
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+  }
+
   ::selection {
-    @apply bg-primary/20 text-primary;
+    background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+    color: var(--color-primary);
   }
 
-  /* Focus styles */
   a:focus-visible, button:focus-visible {
-    @apply outline-none ring-2 ring-highlightBlue/50 ring-offset-2 dark:ring-offset-neutral-dark;
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-highlightBlue) 50%, transparent);
   }
 }
 
 @layer components {
-  /* Add component classes here */
   .container-padding {
-    @apply px-6;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  /* Skill cluster components */
   .skill-cluster {
     transition: all 0.3s ease;
   }
@@ -85,7 +121,6 @@ html, body {
     transition: opacity 0.3s ease;
   }
 
-  /* AOS additional animations */
   [data-aos="zoom-in-slight"] {
     transform: scale(0.95);
     opacity: 0;
@@ -98,7 +133,7 @@ html, body {
   }
 
   .skill-level-bar {
-    width: 0; /* Initial width for animation */
+    width: 0;
     transition: width 0.8s ease-out;
   }
 
@@ -109,9 +144,16 @@ html, body {
 }
 
 @layer utilities {
-  /* Add utility classes here */
   .section-padding {
-    @apply py-16 md:py-24;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 960px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
   }
 }
 
@@ -176,7 +218,6 @@ html.dark { --portfolio-paper:#11171e; --portfolio-ink:#eff2f4; --portfolio-mute
 @media(max-width:650px) { .hero-grid { grid-template-columns:1fr; gap:40px; } .hero-copy h1 { font-size:68px; } .hero-portrait { max-width:360px; width:90%; margin:auto; transform:rotate(1deg); } .hero-disciplines { margin-top:45px; gap:18px; } .hero-disciplines a { width:100%; } .portfolio-home main > section:not(#start) { padding-top:50px; padding-bottom:50px; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
 
-/* Contact follows the same theme tokens as the surrounding portfolio. */
 .portfolio-home #contact,
 .portfolio-home #contact h2,
 .portfolio-home #contact h3 { color:var(--portfolio-ink); }
@@ -193,7 +234,6 @@ html.dark { --portfolio-paper:#11171e; --portfolio-ink:#eff2f4; --portfolio-mute
 .project-visibility { position:absolute; right:18px; bottom:18px; }
 .project-details > a { margin-right:65px; }
 
-/* Shared hover feedback — border/shadow only (no lift/filter jank). */
 .portfolio-home .project-card,
 .portfolio-home .repository-card {
   transition:box-shadow .15s ease, border-color .15s ease;
@@ -206,7 +246,6 @@ html.dark { --portfolio-paper:#11171e; --portfolio-ink:#eff2f4; --portfolio-mute
   box-shadow:0 12px 28px -16px rgba(var(--color-primary-rgb),.4);
 }
 
-/* Motion shared across the entire site — keep transitions short. */
 a, button, input, select { transition:color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease; }
 @media(hover:hover) and (pointer:fine) {
   a.inline-flex:hover, .primary-action:hover, button:hover, .repository-card-bottom > a:hover {
@@ -242,7 +281,6 @@ a, button, input, select { transition:color .15s ease, background-color .15s eas
   .hero-portrait:hover { transform:rotate(2deg); }
 }
 
-/* Light scroll reveals only — no blur/scale (those were causing jank). */
 .scroll-progress { position:fixed; inset:0 0 auto; height:3px; background:var(--portfolio-accent,#2458da); z-index:100; transform-origin:left; pointer-events:none; will-change:transform; }
 @media(prefers-reduced-motion:no-preference) {
   .scroll-reveal {

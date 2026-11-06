@@ -167,7 +167,7 @@ const lang = Astro.currentLocale;
     height: 2px;
     bottom: -4px;
     left: 0;
-    background-color: theme('colors.primary');
+    background-color: var(--color-primary);
     transition: width 0.3s ease;
   }
 
@@ -177,6 +177,6 @@ const lang = Astro.currentLocale;
   }
 
   .nav-link.active {
-    color: theme('colors.primary');
+    color: var(--color-primary);
   }
 </style>
