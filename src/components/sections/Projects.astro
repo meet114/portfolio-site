@@ -1,6 +1,6 @@
 ---
-import Button from '../ui/Button.astro';
 import { t } from '../../utils/i18n';
+import { github_url } from '../../utils/me';
 
 interface Props {
   lang: string | undefined;
@@ -10,41 +10,29 @@ const { lang } = Astro.props;
 
 const projects = [
   {
-    title: 'SwifDock',
-    slug: 'swifdock',
-    repository: 'https://github.com/meet114/swifdock',
-    // image: '/images/projects/db-training.jpg', // No image available
-    gradient: 'from-blue-500 to-cyan-400',
-    tags: [t('projects.tags.systems', lang), t('projects.tags.swift', lang), t('projects.tags.security', lang)],
-    shortDescription: t('projects.swifdock.shortDescription', lang),
-    challenge: t('projects.swifdock.challenge', lang),
-    approach: t('projects.swifdock.approach', lang),
-    result: t('projects.swifdock.result', lang)
+    title: 'FoundationDB–Kafka CDC Bridge',
+    slug: 'cdc-bridge',
+    repository: 'https://github.com/Ronitsabhaya75/Kafka-FDB-Streamline',
+    gradient: 'from-amber-500 to-orange-400',
+    tags: [t('projects.tags.cdc', lang), t('projects.tags.python', lang), t('projects.tags.systems', lang)],
+    shortDescription: t('projects.cdcBridge.shortDescription', lang),
   },
   {
-    title: 'JWKS Server',
+    title: 'TextilesFlow ERP',
+    slug: 'textilesflow',
+    repository: 'https://github.com/meet114/textilesflowerp-staging',
+    gradient: 'from-teal-500 to-emerald-400',
+    tags: [t('projects.tags.mobile', lang), t('projects.tags.web', lang), t('projects.tags.systems', lang)],
+    shortDescription: t('projects.textilesFlow.shortDescription', lang),
+  },
+  {
+    title: 'JWKS Auth Server',
     slug: 'jwks-server',
-    repository: 'https://github.com/meet114/jwks-server',
-    // image: '/images/projects/media-dashboard.jpg',
+    repository: 'https://github.com/meet114/jwks_server',
     gradient: 'from-green-500 to-emerald-400',
     tags: [t('projects.tags.security', lang), t('projects.tags.python', lang), t('projects.tags.web', lang)],
     shortDescription: t('projects.jwksServer.shortDescription', lang),
-    challenge: t('projects.jwksServer.challenge', lang),
-    approach: t('projects.jwksServer.approach', lang),
-    result: t('projects.jwksServer.result', lang)
   },
-  {
-    title: 'PolymorphicCodeVault',
-    slug: 'polymorphic-code-vault',
-    repository: 'https://github.com/meet114/polymorphic-code-vault',
-    // image: '/images/projects/explainer-videos.jpg',
-    gradient: 'from-purple-500 to-indigo-400',
-    tags: [t('projects.tags.cpp', lang), t('projects.tags.java', lang), t('projects.tags.systems', lang)],
-    shortDescription: t('projects.polymorphicCodeVault.shortDescription', lang),
-    challenge: t('projects.polymorphicCodeVault.challenge', lang),
-    approach: t('projects.polymorphicCodeVault.approach', lang),
-    result: t('projects.polymorphicCodeVault.result', lang)
-  }
 ];
 ---
 
@@ -65,7 +53,6 @@ const projects = [
           data-aos-delay={index * 100}
         >
           <div class={`relative overflow-hidden aspect-video bg-gradient-to-br ${project.gradient}`}>
-            {/* Geometric Pattern Overlay */}
             <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
             
             <div class="absolute top-4 left-4 flex flex-wrap gap-2">
@@ -88,10 +75,10 @@ const projects = [
               {project.shortDescription}
             </p>
 
-            {/* Changed to external link or placeholder since internal pages don't exist */}
             <a
               href={project.repository} 
               target="_blank"
+              rel="noopener noreferrer"
               class="inline-flex items-center justify-center rounded-lg font-medium text-sm py-2 px-4 border border-primary text-primary hover:bg-primary/10 bg-transparent transition-colors"
             >
               {t('projects.buttonText', lang)}
@@ -103,8 +90,9 @@ const projects = [
 
     <div class="mt-12 text-center" data-aos="fade-up">
       <a
-        href="https://github.com/meetsaspara"
+        href={github_url}
         target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-lg font-medium text-base py-3 px-8 bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
       >
         {t('projects.allProjectsButtonText', lang)}

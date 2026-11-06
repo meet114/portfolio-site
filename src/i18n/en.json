@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Meetkumar Saspara - Portfolio",
-    "description": "Portfolio of Meetkumar Saspara, a Computer Science student and Developer specializing in AI/ML and Systems Programming."
+    "description": "Portfolio of Meetkumar Saspara — Computer Science student at UNT building CDC pipelines, ERP systems, and secure backend services."
   },
   "nav": {
     "start": "Home",
@@ -15,36 +15,36 @@
   "hero": {
     "greeting": "Hello, I am",
     "name": "Meetkumar Saspara",
-    "pitch": "Computer Science student at University of North Texas focusing on AI/ML, Native Container Runtimes, and Secure Systems.",
-    "role": "CS Student & Developer",
+    "pitch": "Computer Science student at the University of North Texas. I build distributed data pipelines, production SaaS, and secure APIs — from FoundationDB/Kafka CDC to Flutter ERP and JWKS auth.",
+    "role": "CS Student · Software Engineering Intern (Yudiz) · Open to opportunities",
     "ctaProjects": "View Projects",
     "ctaAbout": "More About Me"
   },
   "values": {
     "title": "My Focus",
-    "subtitle": "Core principles driving my development journey.",
-    "card1Title": "Innovation",
-    "card1Text": "Exploring cutting-edge AI/ML architectures like YOLO and implementing native solutions for performance.",
-    "card2Title": "Performance",
-    "card2Text": "Optimizing systems with CUDA and native APIs to achieve low latency and high efficiency.",
+    "subtitle": "What I care about when shipping software.",
+    "card1Title": "Reliability",
+    "card1Text": "Hardening CDC bridges with correct checkpoints, ordering guarantees, retries, and CI that catches delivery bugs before production.",
+    "card2Title": "Full-stack delivery",
+    "card2Text": "Shipping real products end-to-end — Flutter clients, Node/MySQL APIs, staging deploys, and factory IoT telemetry for a live mill.",
     "card3Title": "Security",
-    "card3Text": "Implementing industry-standard security practices including JWT, encryption, and safe allocation."
+    "card3Text": "Building auth services with JWKS, RS256 JWTs, encrypted key storage, Argon2 hashing, and rate limiting backed by tests."
   },
   "skills": {
     "title": "Technical Skills",
-    "subtitle": "A comprehensive toolkit for full-stack and systems development.",
+    "subtitle": "Languages, frameworks, and systems from coursework and production work.",
     "clusters": {
       "languages": {
         "title": "Languages",
-        "description": "Core languages for systems and application development."
+        "description": "Core languages for systems, APIs, and clients."
       },
       "ai_ml": {
         "title": "AI/ML & Data",
-        "description": "Libraries and frameworks for intelligent systems."
+        "description": "Object detection, deep learning, and retrieval workflows."
       },
       "frameworks_tools": {
-        "title": "Frameworks & Tools",
-        "description": "Development ecosystem and deployment technologies."
+        "title": "Frameworks, Cloud & Tools",
+        "description": "APIs, containers, cloud, and CI/CD used in projects and internship."
       }
     },
     "category": {
@@ -56,9 +56,9 @@
   },
   "projects": {
     "pageTitle": "Projects",
-    "pageDescription": "Systems and application development projects.",
+    "pageDescription": "Selected work in distributed systems, SaaS, and security.",
     "heroTitle": "My Projects",
-    "heroSubtitle": "Explore my work in AI, Systems, and Web Development.",
+    "heroSubtitle": "Capstone CDC, family textile ERP, and security coursework.",
     "viewProject": "View Project",
     "detailLabels": {
       "challenge": "Challenge",
@@ -67,56 +67,64 @@
       "technologiesUsed": "Technologies Used"
     },
     "tags": {
-      "systems": "Systems Programming",
+      "systems": "Distributed Systems",
       "security": "Security",
       "ai": "AI/ML",
       "swift": "Swift/macOS",
-      "web": "Web Dev",
+      "web": "Web / SaaS",
       "cpp": "C++",
       "java": "Java",
-      "python": "Python"
+      "python": "Python",
+      "mobile": "Flutter",
+      "cdc": "CDC / Kafka"
     },
     "title": "Selected Projects",
-    "subtitle": "Showcase of my technical capabilities and engineering projects.",
+    "subtitle": "Aligned with my resume — capstone, production SaaS, and security coursework.",
+    "cdcBridge": {
+      "shortDescription": "Capstone CDC bridge from FoundationDB to Apache Kafka with recovery fixes, Prometheus observability, daemon runner, and CI checks.",
+      "challenge": "Keep CDC delivery correct under failure: cursor checkpoints, partition-key ordering, and retriable Kafka commits.",
+      "approach": "Merged recovery fixes, unit and live partition tests, /healthz /readyz /metrics on :9102, and a poll-produce-ack daemon with graceful shutdown.",
+      "result": "Hardened team bridge with telemetry CI, audit logs, and documented consume/ack error handling."
+    },
+    "textilesFlow": {
+      "shortDescription": "Family textile-mill ERP (web, Android, Smart TV) for production tracking, GST billing, accounting, and live loom telemetry.",
+      "challenge": "Support a real Surat weaving mill across platforms while keeping staging isolated from the customer portal.",
+      "approach": "Flutter + Provider client, Node.js/MySQL REST API, GitHub Actions deploy to textilesflowerp.saspara.com staging, ESP32-S3 Modbus IoT path.",
+      "result": "Production-used product with a personal staging environment and live machine dashboards."
+    },
+    "jwksServer": {
+      "shortDescription": "FastAPI/SQLite JWKS server issuing RS256 JWTs with encrypted keys, Argon2 auth, logging, and per-IP rate limits.",
+      "challenge": "Coursework auth service with key rotation, secure storage, and abuse resistance.",
+      "approach": "AES-256-CBC private-key encryption, Argon2 hashing, registration, request logging, 10 req/s per IP, pytest coverage.",
+      "result": "Verified token flows, expired keys, duplicates, encrypted storage, and rate limiting in tests."
+    },
     "swifdock": {
       "shortDescription": "Native macOS container runtime using Swift, providing lightweight containerization without Docker Desktop dependency.",
       "challenge": "Building a container runtime from scratch on macOS without relying on heavy external dependencies like Docker Desktop.",
       "approach": "Implemented container lifecycle management with native macOS process isolation and designed a SwiftUI interface for monitoring.",
       "result": "A lightweight, secure container solution integrated with macOS security frameworks."
     },
-    "jwksServer": {
-      "shortDescription": "Python-based JWKS server implementing industry-standard JWT authentication and cryptographic key rotation.",
-      "challenge": "Creating a secure authentication service with robust encryption and key management.",
-      "approach": "Used FastAPI for RESTful endpoints, AES-256-CBC for encryption, and Argon2 for password hashing.",
-      "result": "High test coverage (97%), secure key storage, and efficient rate limiting."
-    },
-    "polymorphicCodeVault": {
-      "shortDescription": "Comprehensive collection of OOP projects demonstrating mastery of Java and C++ concepts.",
-      "challenge": "Demonstrating advanced OOP principles through diverse and complex implementations.",
-      "approach": "Built various systems including an Enigma machine simulation and an ANSI terminal color system using design patterns.",
-      "result": "10+ projects with 10k+ lines of code, showcasing encapsulation, inheritance, and polymorphism."
-    },
     "buttonText": "View Code",
-    "allProjectsButtonText": "View All Projects"
+    "allProjectsButtonText": "View All on GitHub"
   },
   "timeline": {
     "title": "Experience & Education",
-    "subtitle": "My academic and professional journey.",
-    "item1Title": "AI/ML Intern",
-    "item1Description": "Yudiz Solutions (May 2025 - Aug 2025). Developed real-time object detection systems and optimized inference with CUDA.",
-    "item2Title": "Bachelor Of Science In Computer Science",
-    "item2Description": "University of North Texas (Aug 2024 - May 2027). GPA 3.6/4.0. Focused on Security and Systems.",
-    "item3Title": "Bachelor Of Science In Computer Science",
-    "item3Description": "Stony Brook University (Aug 2023 - Jul 2024). Foundation in Computer Science."
+    "subtitle": "Internship, degrees, and where I’m building next.",
+    "item1Title": "Software Engineering Intern — Yudiz Solutions",
+    "item1Description": "Ahmedabad, India · May 2025 – Aug 2025. YOLO/PyTorch object detection (89% @ 30 FPS); Dockerized services on AWS EC2/S3/CloudWatch; REST APIs, CI/CD, and stakeholder demos.",
+    "item2Title": "B.S. Computer Science — University of North Texas",
+    "item2Description": "Denton, TX · Aug 2024 – Expected May 2027. GPA 3.6/4.0. Capstone: FoundationDB–Kafka CDC Bridge.",
+    "item3Title": "Computer Science Studies — Stony Brook University",
+    "item3Description": "Stony Brook, NY · Aug 2023 – Jul 2024. GPA 3.4/4.0. Foundations before transferring to UNT."
   },
   "footerCTA": {
     "title": "Let's Connect",
-    "subtitle": "I am open to new opportunities and collaborations.",
+    "subtitle": "Open to internships, collaborations, and interesting systems problems.",
     "buttonText": "Contact Me"
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Feel free to reach out for opportunities or questions.",
+    "subtitle": "Reach out for opportunities or questions — saspara.com · GitHub · LinkedIn.",
     "emailTitle": "Email",
     "emailButtonText": "Send Email",
     "phoneTitle": "Phone",

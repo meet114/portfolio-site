@@ -1,10 +1,8 @@
 ---
 import { 
-  PaletteIcon, Code2Icon, MegaphoneIcon, KanbanSquareIcon, LayersIcon, ImageIcon, PenToolIcon, 
-  VideoIcon, ClapperboardIcon, CameraIcon, Mic2Icon, FigmaIcon, FileCodeIcon, BracesIcon, TerminalIcon, 
-  RocketIcon, Globe2Icon, LayoutGridIcon, LinkedinIcon, Edit3Icon, SearchCheckIcon, CheckSquareIcon, 
-  BookTextIcon, LayoutDashboardIcon, ActivityIcon, BoxIcon, CloudIcon, CpuIcon, DatabaseIcon, 
-  GitBranchIcon, ServerIcon 
+  Code2Icon, LayersIcon, BracesIcon, TerminalIcon, 
+  RocketIcon, Globe2Icon, BoxIcon, CloudIcon, CpuIcon, DatabaseIcon, 
+  GitBranchIcon, ServerIcon, ActivityIcon, SmartphoneIcon
 } from '@lucide/astro';
 
 import { t } from '../../utils/i18n';
@@ -23,11 +21,11 @@ const skillClusters = [
     icon: Code2Icon, 
     tools: [
       { name: 'Python', icon: TerminalIcon },
+      { name: 'Java', icon: Code2Icon },
       { name: 'JavaScript', icon: BracesIcon },
-      { name: 'Java', icon: FileCodeIcon },
-      { name: 'C/C++', icon: Code2Icon },
-      { name: 'Swift', icon: RocketIcon },
+      { name: 'C / C++', icon: Code2Icon },
       { name: 'SQL', icon: DatabaseIcon },
+      { name: 'Dart / Swift', icon: RocketIcon },
     ]
   },
   {
@@ -39,8 +37,9 @@ const skillClusters = [
       { name: 'PyTorch', icon: CpuIcon },
       { name: 'TensorFlow', icon: LayersIcon },
       { name: 'YOLO', icon: BoxIcon }, 
-      { name: 'OpenCV', icon: CameraIcon }, 
-      { name: 'CUDA', icon: ActivityIcon }, 
+      { name: 'LLaMA / RAG', icon: ActivityIcon }, 
+      { name: 'Kafka / CDC', icon: ServerIcon }, 
+      { name: 'Prometheus', icon: ActivityIcon }, 
     ]
   },
   {
@@ -49,12 +48,12 @@ const skillClusters = [
     description: t('skills.clusters.frameworks_tools.description', lang),
     icon: Globe2Icon, 
     tools: [
-      { name: 'ReactJS', icon: Globe2Icon },
-      { name: 'NodeJS', icon: ServerIcon },
-      { name: 'Docker', icon: BoxIcon }, 
-      { name: 'Git', icon: GitBranchIcon },
+      { name: 'FastAPI / Flask', icon: ServerIcon },
+      { name: 'React / Node', icon: Globe2Icon },
+      { name: 'Flutter', icon: SmartphoneIcon },
+      { name: 'Docker / K8s', icon: BoxIcon }, 
       { name: 'AWS', icon: CloudIcon },
-      { name: 'Linux', icon: TerminalIcon },
+      { name: 'GitHub Actions', icon: GitBranchIcon },
     ]
   }
 ];
@@ -106,7 +105,3 @@ const skillClusters = [
     </div>
   </div>
 </section>
-
-<script>
-  // Skills section will be animated via the animations.js file
-</script>
