@@ -193,69 +193,35 @@ html.dark { --portfolio-paper:#11171e; --portfolio-ink:#eff2f4; --portfolio-mute
 .project-visibility { position:absolute; right:18px; bottom:18px; }
 .project-details > a { margin-right:65px; }
 
-/* Shared hover and keyboard feedback for both project collections. */
+/* Shared hover feedback — border/shadow only (no lift/filter jank). */
 .portfolio-home .project-card,
 .portfolio-home .repository-card {
-  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-.portfolio-home .project-cover,
-.portfolio-home .repository-cover {
-  transition:filter .3s ease;
-}
-.portfolio-home .project-number,
-.portfolio-home .repository-number {
-  transition:transform .35s ease, color .35s ease;
+  transition:box-shadow .15s ease, border-color .15s ease;
 }
 .portfolio-home .project-card:focus-within,
-.portfolio-home .repository-card:focus-within {
+.portfolio-home .repository-card:focus-within,
+.portfolio-home .project-card:hover,
+.portfolio-home .repository-card:hover {
   border-color:var(--portfolio-accent);
   box-shadow:0 12px 28px -16px rgba(var(--color-primary-rgb),.4);
 }
-@media(hover:hover) and (pointer:fine) {
-  .portfolio-home .project-card:hover,
-  .portfolio-home .repository-card:hover {
-    transform:translateY(-6px)!important;
-    border-color:var(--portfolio-accent);
-    box-shadow:0 18px 36px -18px rgba(var(--color-primary-rgb),.45);
-  }
-  .portfolio-home .project-card:hover .project-cover,
-  .portfolio-home .repository-card:hover .repository-cover {
-    filter:brightness(1.12);
-  }
-  .portfolio-home .project-card:hover .project-number,
-  .portfolio-home .repository-card:hover .repository-number {
-    transform:translate(-6px,-3px);
-    color:#ffffff38;
-  }
-}
-@media(prefers-reduced-motion:reduce) {
-  .portfolio-home .project-card:hover,
-  .portfolio-home .repository-card:hover,
-  .portfolio-home .project-card:hover .project-number,
-  .portfolio-home .repository-card:hover .repository-number { transform:none!important; }
-}
 
-/* Motion shared across the entire site. */
-a, button, input, select { transition:color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .25s ease; }
+/* Motion shared across the entire site — keep transitions short. */
+a, button, input, select { transition:color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease; }
 @media(hover:hover) and (pointer:fine) {
   a.inline-flex:hover, .primary-action:hover, button:hover, .repository-card-bottom > a:hover {
-    transform:translateY(-3px);
     box-shadow:0 8px 22px -10px rgba(var(--color-primary-rgb),.6);
   }
-  .nav-link:hover { transform:translateY(-2px); display:inline-block; }
   .secondary-action:hover, .gallery-back:hover, footer a:hover { color:var(--portfolio-accent); }
-  .hero-portrait { transition:transform .5s ease, box-shadow .5s ease; }
-  .hero-portrait:hover { transform:rotate(0deg) translateY(-5px); box-shadow:0 20px 40px -25px rgba(var(--color-primary-rgb),.5); }
-  .portfolio-home #about .group, .portfolio-home #contact .group, .skill-cluster { transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+  .hero-portrait { transition:transform .25s ease, box-shadow .25s ease; }
+  .hero-portrait:hover { transform:rotate(0deg); box-shadow:0 16px 32px -24px rgba(var(--color-primary-rgb),.4); }
+  .portfolio-home #about .group, .portfolio-home #contact .group, .skill-cluster { transition:border-color .15s ease, box-shadow .15s ease; }
   .portfolio-home #about .group:hover, .portfolio-home #contact .group:hover {
-    transform:translateY(-5px)!important;
     border-color:var(--portfolio-accent);
-    box-shadow:0 16px 32px -24px rgba(var(--color-primary-rgb),.6);
+    box-shadow:0 12px 24px -20px rgba(var(--color-primary-rgb),.5);
   }
-  .tool-item { transition:transform .25s ease, border-color .25s ease; }
-  .tool-item:hover { border-color:var(--portfolio-accent); transform:translateY(-3px); }
-  #contact .group svg, #about .group svg { transition:transform .3s ease; }
-  #contact .group:hover svg, #about .group:hover svg { transform:translateY(-2px) rotate(-5deg); }
+  .tool-item { transition:border-color .15s ease; }
+  .tool-item:hover { border-color:var(--portfolio-accent); }
 }
 @keyframes portfolio-enter { from { opacity:0; translate:0 22px; } to { opacity:1; translate:0 0; } }
 @media(prefers-reduced-motion:no-preference) {
@@ -276,27 +242,21 @@ a, button, input, select { transition:color .2s ease, background-color .2s ease,
   .hero-portrait:hover { transform:rotate(2deg); }
 }
 
+/* Light scroll reveals only — no blur/scale (those were causing jank). */
+.scroll-progress { position:fixed; inset:0 0 auto; height:3px; background:var(--portfolio-accent,#2458da); z-index:100; transform-origin:left; pointer-events:none; will-change:transform; }
 @media(prefers-reduced-motion:no-preference) {
-  .scroll-reveal { transition:opacity .7s ease var(--scroll-delay,0ms), translate .7s cubic-bezier(.2,.7,.3,1) var(--scroll-delay,0ms), transform .25s ease, box-shadow .25s ease, border-color .25s ease!important; }
-  .scroll-reveal.scroll-pending, .portfolio-home [data-aos].scroll-pending { opacity:0!important; translate:0 32px; }
-}
-
-/* Scroll choreography uses independent properties so hover remains responsive. */
-.scroll-progress { position:fixed; inset:0 0 auto; height:3px; background:var(--portfolio-accent,#2458da); z-index:100; transform-origin:left; pointer-events:none; }
-@media(prefers-reduced-motion:no-preference) {
-  .scroll-reveal { scale:1; translate:0 0; filter:blur(0); transition:opacity .85s ease var(--scroll-delay,0ms), translate .95s cubic-bezier(.16,1,.3,1) var(--scroll-delay,0ms), scale .95s cubic-bezier(.16,1,.3,1) var(--scroll-delay,0ms), filter .8s ease var(--scroll-delay,0ms), transform .25s ease, box-shadow .25s ease, border-color .25s ease!important; }
-  .scroll-reveal.scroll-pending, .portfolio-home [data-aos].scroll-pending { opacity:0!important; translate:0 64px; scale:.96; filter:blur(5px); }
-  .hero-portrait { overflow:hidden; }
-  .hero-portrait img { scale:1.06; }
-}
-.custom-cursor-ring,.custom-cursor-dot { position:fixed; top:0; left:0; pointer-events:none; z-index:10000; opacity:0; }
-.custom-cursor-ring::before { content:''; position:absolute; width:34px; height:34px; left:-17px; top:-17px; border:1px solid var(--portfolio-accent,#2458da); border-radius:50%; background:rgba(var(--color-primary-rgb),.05); transition:width .25s,height .25s,left .25s,top .25s,background .25s; }
-.custom-cursor-dot::before { content:''; position:absolute; left:-3px; top:-3px; width:6px; height:6px; background:var(--portfolio-accent,#2458da); border-radius:50%; box-shadow:0 0 0 1px var(--portfolio-paper,#fff); }
-@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
-  .cursor-active, .cursor-active a, .cursor-active button { cursor:none!important; }
-  .cursor-active .custom-cursor-ring,.cursor-active .custom-cursor-dot { opacity:1; }
-  .custom-cursor-ring.is-card::before { width:50px; height:50px; left:-25px; top:-25px; }
-  .custom-cursor-ring.is-link::before { width:58px; height:58px; left:-29px; top:-29px; background:rgba(var(--color-primary-rgb),.14); }
-  .custom-cursor-ring.is-pressed::before { width:24px; height:24px; left:-12px; top:-12px; }
+  .scroll-reveal {
+    transition: opacity .45s ease var(--scroll-delay,0ms), translate .45s ease var(--scroll-delay,0ms), transform .2s ease, box-shadow .2s ease, border-color .2s ease !important;
+  }
+  .scroll-reveal.scroll-pending {
+    opacity: 0 !important;
+    translate: 0 18px;
+  }
 }
 .portrait-image-window { overflow:hidden; }
+.portfolio-home .project-card,
+.portfolio-home .repository-card,
+.portfolio-home .skill-cluster,
+.portfolio-home .hero-portrait {
+  will-change: auto;
+}
