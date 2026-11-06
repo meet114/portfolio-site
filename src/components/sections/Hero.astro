@@ -12,15 +12,15 @@ const lang = Astro.currentLocale;
       <p class="hero-intro">{t('hero.greeting', lang)} <strong>{t('hero.name', lang)}.</strong></p>
       <p class="hero-description">{t('hero.pitch', lang)}</p>
       <div class="hero-actions">
-        <a class="primary-action" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
-        <a class="secondary-action" href="/resume/">View résumé <span aria-hidden="true">→</span></a>
+        <a class="primary-action" href="#projects">Explore my work</a>
+        <a class="secondary-action" href="/resume/">View résumé</a>
       </div>
     </div>
     <figure class="hero-portrait">
       <div class="portrait-topline"><span>THE PERSON BEHIND THE CODE</span><span>01 / MS</span></div>
       <div class="portrait-image-window"><Image src={profileImg} alt="Meetkumar Saspara" width="500" height="600" loading="eager" fetchpriority="high" /></div>
-      <figcaption><span>{t('hero.role', lang)}</span><span aria-hidden="true">↗</span></figcaption>
+      <figcaption><span>{t('hero.role', lang)}</span></figcaption>
     </figure>
   </div>
-  <div class="hero-disciplines max-w-container mx-auto px-6"><span>DISTRIBUTED SYSTEMS</span><span>FULL-STACK DELIVERY</span><span>SECURITY BY DESIGN</span><a href="#about">SCROLL TO EXPLORE ↓</a></div>
+  <div class="hero-disciplines max-w-container mx-auto px-6"><span>DISTRIBUTED SYSTEMS</span><span>FULL-STACK DELIVERY</span><span>SECURITY BY DESIGN</span><a href="#about">Scroll to explore</a></div>
 </section>
